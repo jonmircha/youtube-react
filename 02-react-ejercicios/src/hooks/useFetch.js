@@ -13,7 +13,7 @@ export const useFetch = (url) => {
       setLoading(true);
 
       try {
-        const res = await fetch(url);
+        const res = await fetch(url, { signal });
 
         if (!res.ok) {
           let err = new Error("Error en la petición Fetch");
