@@ -1,4 +1,5 @@
 import React from "react";
+import DOMPurify from "dompurify";
 
 const Message = ({ msg, bgColor }) => {
   let styles = {
@@ -10,10 +11,11 @@ const Message = ({ msg, bgColor }) => {
     backgroundColor: bgColor,
   };
 
+  const sanitizedMsg = DOMPurify.sanitize(msg);
   return (
     <div style={styles}>
       {/* <p>{msg}</p> */}
-      <p dangerouslySetInnerHTML={{ __html: msg }} />
+      <p dangerouslySetInnerHTML={{ __html: sanitizedMsg }} />
     </div>
   );
 };
